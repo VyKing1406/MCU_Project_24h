@@ -1,0 +1,7 @@
+../Core/Src/button.c:20:6:button_reading	16	static
+../Core/Src/button.c:51:6:button_process	16	static
+../Core/Src/button.c:76:6:STATE_0	8	static
+../Core/Src/button.c:83:6:STATE_1	8	static
+../Core/Src/button.c:91:6:STATE_2	8	static
+../Core/Src/button.c:99:6:STATE_3	8	static
+../Core/Src/button.c:104:6:STATE_4	8	static
