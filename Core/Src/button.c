@@ -13,6 +13,7 @@ static GPIO_PinState debounceButtonBuffer2[NO_OF_BUTTONS];
 static GPIO_PinState debounceButtonBuffer3[NO_OF_BUTTONS];
 int timer_buttonpress_counter[NO_OF_BUTTONS];
 int COUNT = 0;
+int flag_auto=0;
 uint16_t Pin_input[NO_OF_BUTTONS] = { RESET_Pin, INC_Pin, DEC_Pin };
 
 ///////////////////////////////////////////////////////////////////
@@ -29,16 +30,18 @@ void button_reading() {
 
 				if (debounceButtonBuffer2[i] == BUTTON_IS_PRESSED) {
 					button_process(Pin_input[i]);
-					timer_buttonpress_counter[i] = NU_OF_DEBOUNCE;
+					setTimer(1, 10000);					timer_buttonpress_counter[i] = NU_OF_DEBOUNCE;
 				}
 			} else {
 				timer_buttonpress_counter[i]--;
 				if (timer_buttonpress_counter[i] == 0) {
 					if (debounceButtonBuffer2[i] == BUTTON_IS_PRESSED) {
 						button_process(Pin_input[i]);
+						setTimer(1, 10000);
 					}
 					timer_buttonpress_counter[i] = NU_OF_AUTO_COUNTER;
 				} else {
+
 					STATE_4();
 				}
 			}
@@ -104,10 +107,11 @@ void STATE_3() {
 void STATE_4() {
 	if (timer_flag[1] == 1) {
 		COUNT--;
-		if (COUNT < 0)
-			setTimer(1, 10000);
+		if (COUNT < 0){
 			STATE_0();
-			return;
+			return;}
+		setTimer(1, 10000);
+		display_seg7(COUNT);
 	}
 }
 
