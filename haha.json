@@ -1,0 +1,15 @@
+// 20230204063253
+// http://localhost:3000/course
+
+[
+  {
+    "id": 1,
+    "name": "hoho",
+    "description": "huhu"
+  },
+  {
+    "name": "ahjhj",
+    "description": "zohohoho",
+    "id": 3
+  }
+]
